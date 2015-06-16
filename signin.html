@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>workedprofile</title>
+	<link rel="favicon" href="images/favicon.ico">
+	<link rel="stylesheet" href="styles/jquery.mobile.min.css">
+	<link rel="stylesheet" href="styles/wp.css">
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.mobile.min.js"></script>
+	<script src="scripts/modernizr-latest.js"></script>
+	<script src="scripts/wp.js"></script>
+	<script src="scripts/wp_common.js"></script>
+	<link rel="shortcut icon" href="images/favicon.ico" >
+</head>
+<body>
+	<div data-role="page" id="page_sgin" class="def def-splash">
+		<div role="main" class="ui-content">
+			<div class="main">
+				<div class="brand-rect">
+					<img src="images/logo-rect-white.png">
+				</div>
+				<form id="formSignIn">
+					<input type="email" data-mini="true" placeholder="Email" id="formSignIn_Email">
+					<input type="password" data-mini="true" placeholder="Password" id="formSignIn_Password">
+					<div class="ui-grid-a acts">
+						<div class="ui-block-a">
+							<a data-rel="back" class="ui-btn ui-corner-all btn-red">Back</a>
+						</div>
+						<div class="ui-block-b">
+							<div class="button-wrap">
+								<button type="submit" class="ui-btn ui-corner-all">Sign In</button>
+							</div>
+						</div>
+					</div>
+				</form>
+				<a href="forget_password" data-role="none" class="link-yellow">Forget Password</a>
+			</div>
+		</div>
+
+<script type="text/javascript">
+$(function(){
+	console.log('signin called...');
+	
+	//FIXME harus ngecek apakah sudah login atau belum
+	//FIXME bila sudah, langsung lempar aja ke hub
+
+	$( "#formSignIn" ).submit(function( event ) {
+		event.preventDefault();
+		//FIXME di sini harusnya validasi user input dulu
+		
+		$.ajax({
+			url: wp_url+"signin",
+			data: { 
+				pdid: localStorage['pdid'],
+				drid: localStorage['drid'],
+				ver: ver,
+				email: $('#formSignIn_Email').val(),
+				pwd: $('#formSignIn_Password').val(),		
+			},
+			type: "POST",
+			cache: false,
+			dataType: 'json',
+			
+			success: function(response, status, xhr) {
+				console.log("wpLogin responded...");
+				
+				if (response.wpCode == 999) {
+					localStorage.setItem("User", JSON.stringify(response.User));
+					localStorage.setItem("dtk", response.dtk);
+					console.log("seharusnya ke hub");
+					window.location.href = "hub";
+				}else{
+					console.log("something not right happened...");
+					console.log("error code: "+response.wpCode);
+					console.log("error message: "+response.wpMessage);
+					
+					// FIXME
+					// hati hati async
+					alert("error code: "+response.wpCode+", error message: "+response.wpMessage);
+				}
+				
+			},
+			error: function(xhr, status, error) {
+				console.log("error in contacting wpRegisterNewPerson...");
+				console.log(xhr, status, error);
+				window.location.href = "error.html";
+			}
+		});// end ajax
+	});// end submit
+	
+	
+	console.log('signin finished...');
+	
+})// end $
+</script>
+
+		
+		
+	</div>
+</body>
+</html>

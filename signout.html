@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>workedprofile</title>
+	<link rel="favicon" href="images/favicon.ico">
+	<link rel="stylesheet" href="styles/jquery.mobile.min.css">
+	<link rel="stylesheet" href="styles/wp.css">
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.mobile.min.js"></script>
+	<script src="scripts/modernizr-latest.js"></script>
+	<script src="scripts/wp.js"></script>
+	<script src="scripts/wp_common.js"></script>
+	<link rel="shortcut icon" href="images/favicon.ico" >
+</head>
+<body>
+	<div data-role="page" id="page_signin" class="def def-splash">
+		<div role="main" class="ui-content">
+			<div class="main">
+				<div class="brand-rect">
+					<img src="images/logo-rect-white.png">
+				</div>
+				<a href="index.html" data-role="none" class="link-yellow">Back to homepage</a>
+			</div>
+		</div>
+
+<script type="text/javascript">
+$(function(){
+	console.log('signout called...');
+	$.ajax({
+		url: wp_url+"signout",
+		data: { 
+			pdid: localStorage['pdid']
+		},
+		type: "POST",
+		cache: false,
+		dataType: 'json',
+		
+		success: function(response, status, xhr) {
+			console.log("wpLogin responded...");
+			
+			if (response.wpCode == 999) {
+				localStorage.removeItem('dtk');
+				localStorage.removeItem("User");
+				console.log("seharusnya ke index.html");
+				window.location.href = "index.html";
+			}else{
+				console.log("something not right happened...");
+				console.log("error code: "+response.wpCode);
+				console.log("error message: "+response.wpMessage);
+				
+				// FIXME
+				// hati hati async
+				alert("error code: "+response.wpCode+", error message: "+response.wpMessage);
+			}
+			
+		},
+		error: function(xhr, status, error) {
+			console.log("error in contacting signout...");
+			console.log(xhr, status, error);
+			window.location.href = "error.html";
+		}
+	});// end ajax
+	
+	console.log('signout finished...');
+	
+})// end $
+</script>
+
+		
+		
+	</div>
+</body>
+</html>

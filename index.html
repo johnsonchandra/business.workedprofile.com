@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>workedprofile</title>
+	<link rel="favicon" href="images/favicon.ico" />
+	<link rel="stylesheet" href="styles/jquery.mobile.min.css" />
+	<link rel="stylesheet" href="styles/wp.css" />
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.mobile.min.js"></script>
+	<script src="scripts/modernizr-latest.js"></script>
+	<script src="scripts/wp.js"></script>
+	<script src="scripts/wp_common.js"></script>
+	
+	<link rel="shortcut icon" href="images/favicon.ico" />
+</head>
+<body>
+	<div data-role="page" id="page_index" class="def def-splash">
+		<div role="main" class="ui-content">
+			<div class="main">
+				<div class="brand-round">
+					<img src="images/logo-outline.png">
+				</div>
+				<p>WP-BUSINESS</p>
+				<div class="acts">
+					<a href="signin.html" class="ui-btn ui-corner-all btn-blue">Sign In</a>
+					<a href="register.html" class="ui-btn ui-corner-all btn-trans">Register</a>
+				</div>
+			</div>
+		</div>
+
+<script type="text/javascript">
+$(function(){
+	console.log('biz index called...');
+
+	var userDevice = checkDevice();
+	alert(userDevice);
+	//FIXME seharusnya di sini ngecek ada pdid dan dtk valid atau enggak ke belakang
+	//FIXME kalau gak valid, langsung removeItem dan registerNewDevice lagi dari mula
+
+	var User = localStorage["User"];
+	
+	if(User != null){
+		window.location.href = "hub";
+	}
+
+	console.log('index finished...');
+	
+})// end $
+</script>
+
+	</div>	
+</body>
+</html>

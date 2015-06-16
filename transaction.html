@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>workedprofile</title>
+	<link rel="favicon" href="../images/favicon.ico">
+	<link rel="stylesheet" href="../styles/jquery.mobile.min.css">
+	<link rel="stylesheet" href="../styles/wp.css">
+	<script src="../scripts/jquery.min.js"></script>
+	<script src="../scripts/jquery.mobile.min.js"></script>
+	<script src="../scripts/plugs.js"></script>
+	<script src="../scripts/wp.js"></script>
+	<link rel="shortcut icon" href="../images/favicon.ico">
+</head>
+<body>
+	<div data-role="page" id="page_hub" class="def">
+		<div data-role="header" data-position="fixed">
+			<form class="ui-filterable">
+				<input data-type="search">
+			</form>
+			<a href="hub.html" data-role="none">
+				<img src="../images/logo.png">
+			</a>
+			<a href="my_profile.html" data-role="none">
+				<img src="../images/user.png">
+			</a>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="transaction.html" class="ui-btn-active active"><span>Pending</span> <span>17</span></a></li>
+					<li><a href="transaction_search.html"><span>Search</span> <span></span></a></li>
+				</ul>
+			</div>
+		</div>
+		<div role="main" class="ui-content def-fluid">
+			<table data-role="table" id="table-column-toggle" class="ui-body-d ui-shadow table-stripe ui-responsive">
+				<thead>
+					<tr>
+						<th>Business-Channel</th>
+						<th>Transaction-ID</th>
+						<th>Transaction-Type</th>
+						<th>Customer/PIC</th>
+						<th>Total Amount/Quantity</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>www.paveels.com</td>
+						<td>98765432100123456789</td>
+						<td>Sales-Transaction</td>
+						<td>Vitri Zulianti</td>
+						<td>Rp. 123.456.789</td>
+						<td>Payment Confirmation Request</td>
+					</tr>
+					<tr>
+						<td>www.paveels.com</td>
+						<td>12345678901234567890</td>
+						<td>Sales-Transaction</td>
+						<td>Johnson Chandra</td>
+						<td>Rp. 123.456.789</td>
+						<td>Waiting for Payment</td>
+					</tr>
+					<tr>
+						<td>POX Gudang Paveels</td>
+						<td>1234567890123423423423</td>
+						<td>Inventory-Transaction</td>
+						<td>Lala</td>
+						<td>23 Items</td>
+						<td>Open</td>
+					</tr>
+					<tr>
+						<td>www.paveels.com</td>
+						<td>12345678901234567890</td>
+						<td>Sales-Retur-Transaction</td>
+						<td>Hwan</td>
+						<td>Rp. 123.456.789</td>
+						<td>Open</td>
+					</tr>
+					<tr>
+						<td>www.paveels.com</td>
+						<td>POX Outlet Plaza Senayan</td>
+						<td>Sales-Transaction</td>
+						<td>Retail Customer</td>
+						<td>Rp. 123.456.789</td>
+						<td>Open</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="transaction.html" class="ui-btn-active active ui-link ui-btn">Transaction</a></li>
+					<li><a href="product.html">Product</a></li>
+					<li><a href="customer.html">Customer</a></li>
+					<li><a href="report.html">Report</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
