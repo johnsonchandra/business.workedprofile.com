@@ -105,7 +105,7 @@ $(function(){
 		// just to be sure. actually the button must be disable
 		if(mayRegister == true){
 			$.ajax({
-				url: wp_url+"wpRegisterNewPerson",
+				url: wp_url+"userRegistration",
 				data: { 
 					pdid: localStorage['pdid'],
 					drid: localStorage['drid'],
@@ -120,14 +120,14 @@ $(function(){
 				dataType: 'json',
 				
 				success: function(response, status, xhr) {
-					console.log("wpRegisterNewPerson responded...");
+					console.log("userRegistration responded...");
 					
 					if (response.wpCode == 999) {
 						console.log("dtk: "+response.dtk);
 						localStorage.setItem("User", JSON.stringify(response.User));
 						localStorage.setItem("dtk",response.dtk);
 						console.log("seharusnya ke hub");
-						window.location.href = "hub";
+						window.location.href = "hub.html";
 					}else{
 						console.log("something not right happened...");
 						console.log("error code: "+response.wpCode);
@@ -139,7 +139,7 @@ $(function(){
 					}
 				},
 				error: function(xhr, status, error) {
-					console.log("error in contacting wpRegisterNewPerson...");
+					console.log("error in contacting userRegistration...");
 					window.location.href = "error.html";
 				}
 			});// end ajax

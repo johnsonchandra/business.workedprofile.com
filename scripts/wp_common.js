@@ -1,5 +1,5 @@
 /* WP Script for ALL pages*/
-var wp_url = "http://localhost:8080/json/";
+var wp_url = "https://localhost:8443/json/";
 var ver = "wp.95.20150522"
 
 
