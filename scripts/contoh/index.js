@@ -5,5 +5,12 @@
 
 $(function(){
 	console.log('index.js called...');
+
+//	$( "#formRegistrationUserEmail" ).keyup(function() {
+//	var value = $( this ).val();
+//	alert(value);
+//}).keyup();
+
+	
 	
 })// end $
